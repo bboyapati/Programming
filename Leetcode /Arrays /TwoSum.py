@@ -10,3 +10,9 @@ class Solution:
             for j in range(i+1, n):
                 if nums[i] + nums[j] == target:
                     return [i,j]
+
+'''
+Iterate through the array from the start using a pointer
+Iterated through the array from the end using another pointer
+If each value adds up to the target, return indices of two numbers
+'''
