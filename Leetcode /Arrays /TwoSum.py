@@ -5,14 +5,19 @@ You can return the answer in any order.
 """
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        n = len(nums)
-        for i in range(0, n-1):
-            for j in range(i+1, n):
-                if nums[i] + nums[j] == target:
-                    return [i,j]
+        prevMap = {}  # val -> index
+
+        for i, n in enumerate(nums):
+            diff = target - n
+            if diff in prevMap:
+                return [prevMap[diff], i]
+            prevMap[n] = i
 
 '''
-Iterate through the array from the start using a pointer
-Iterated through the array from the end using another pointer
-If each value adds up to the target, return indices of two numbers
+Time Complexity: O(n)
+
+Use dictionary to store previously encountered numbers as keys and their indices as values 
+Iterate through nums using enumerate function
+For each element n at index i, calculate difference between target and n
+Check if difference exists as key in dictionary to find complement as n + complement = target
 '''
